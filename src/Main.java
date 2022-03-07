@@ -3,24 +3,22 @@ public class Main {
 
         Rocket firstRocket = createFirstRocket();
         Rocket secondRocket = createSecondRocket();
-        assignMaxPowerToPropellants(firstRocket, secondRocket);
         printRocketsStatus(firstRocket, secondRocket);
 
     }
 
-    private static void assignMaxPowerToPropellants(Rocket firstRocket, Rocket secondRocket) throws Exception {
-        assignMaxPowerToPropellantsOfFirstRocket(firstRocket);
-        assignMaxPowerToPropellantsOfSecondRocket(secondRocket);
-    }
-
     private static Rocket createFirstRocket() throws Exception {
-        String code = "32WESSDS";
-        return new Rocket(code);
+        Rocket rocket = new Rocket("32WESSDS");
+        assignMaxPowerToPropellantsOfFirstRocket(rocket);
+        return rocket;
+
     }
 
     private static Rocket createSecondRocket() throws Exception {
-        String code = "LDSFJA32";
-        return new Rocket(code);
+        Rocket rocket = new Rocket("LDSFJA32");
+        assignMaxPowerToPropellantsOfSecondRocket(rocket);
+        return rocket;
+
     }
 
     private static void assignMaxPowerToPropellantsOfFirstRocket(Rocket rocket) throws Exception {
