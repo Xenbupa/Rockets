@@ -1,18 +1,48 @@
-public class Rocket {
-    private String code;
-    private int propellant;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Rocket(String code, int propellant) {
+public class Rocket {
+
+    private String code;
+
+    private List<Propellant> propellants = new ArrayList<>();
+
+
+    public Rocket(String code) throws Exception {
+        checkCode(code);
         this.code = code;
-        this.propellant = propellant;
+
+    }
+
+    private void checkCode(String code) throws Exception {
+        if (!code.matches("[A-Z0-9]{8}")) {
+            throw new Exception("codi erroni!");
+        }
     }
 
     public String getCode() {
         return code;
     }
 
-    public int getPropellant() {
-        return propellant;
+    public void addPropellant(int maximumPower) throws Exception {
+        propellants.add(new Propellant(maximumPower));
+
     }
 
+    public List<Propellant> getPropellants() {
+        return propellants;
+    }
+
+    public String printPropellantsPower() {
+        String result = "";
+        int i = 1;
+        for (Propellant propellant : propellants) {
+            result += "Propulsor " + i + " : màxima potencia " + propellant.getMaximumPower() + " \n";
+            i++;
+        }
+        return result;
+    }
+
+
 }
+
