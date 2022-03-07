@@ -3,13 +3,13 @@ public class Propellant {
     private int maximumPower;
 
     public Propellant(int maximumPower) throws Exception {
-        checkNaximumPower();
+        checkMaximumPower(maximumPower);
         this.maximumPower = maximumPower;
 
     }
 
-    private void checkNaximumPower() throws Exception {
-        if(!Character.isDigit(maximumPower)) throw new Exception("Potencia erronea");
+    private void checkMaximumPower(int maximumPower) throws Exception {
+        if(maximumPower<=0)throw new Exception("Potencia erronea!");
     }
 
     public int getMaximumPower() {

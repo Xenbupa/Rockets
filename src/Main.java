@@ -5,6 +5,7 @@ public class Main {
         Rocket secondRocket = createSecondRocket();
         assignMaxPowerToPropellants(firstRocket, secondRocket);
         printRocketsStatus(firstRocket, secondRocket);
+
     }
 
     private static void assignMaxPowerToPropellants(Rocket firstRocket, Rocket secondRocket) throws Exception {
