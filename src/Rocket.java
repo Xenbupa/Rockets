@@ -24,13 +24,33 @@ public class Rocket {
         return code;
     }
 
-    public void addPropellant(int maximumPower) throws Exception {
-        propellants.add(new Propellant(maximumPower));
+    public void addPropellant(int maximumPower,int currentPower) throws Exception {
+        propellants.add(new Propellant(maximumPower,currentPower));
 
     }
 
     public List<Propellant> getPropellants() {
         return propellants;
+    }
+
+    public void addPower()  {
+        for (Propellant propellant : propellants) {
+            propellant.addPower();
+        }
+    }
+    public void removePower()  {
+        for (Propellant propellant : propellants) {
+            propellant.removePower();
+        }
+    }
+
+
+    public int getCurrentRocketPower() {
+        int result = 0;
+        for (Propellant propellant : propellants) {
+            result += propellant.getCurrentPower();
+        }
+        return result;
     }
 
     public String printPropellantsPower() {
