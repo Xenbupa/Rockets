@@ -91,8 +91,8 @@ public class Main {
 
     private static void printRocketsCurrentTotalPower(Rocket firstRocket, Rocket secondRocket) {
 
-        System.out.println(  "Potencia del segon coet " + firstRocket.getCurrentRocketPower());
-        System.out.println( "Potencia del primer coet " + secondRocket.getCurrentRocketPower()+"\n");
+        System.out.println(  "Potencia del primer coet " + firstRocket.getCurrentRocketPower());
+        System.out.println( "Potencia del segon coet " + secondRocket.getCurrentRocketPower()+"\n");
     }
 }
 
