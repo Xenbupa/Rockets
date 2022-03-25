@@ -1,23 +1,23 @@
 public class Propellant {
     private static final int MAX_INCREMENT_POWER = 10;
     private int maximumPower;
-    private int currentPower = 0;
+    private int currentPower;
 
-    public Propellant(int maximumPower, int currentPower) throws Exception {
+    public Propellant(int maximumPower) throws Exception {
         checkMaximumPower(maximumPower);
         this.maximumPower = maximumPower;
-        this.currentPower = currentPower;
+        this.currentPower = 0;
 
     }
 
-    public void addPower()  {
+    public void increasePower()  {
         currentPower += MAX_INCREMENT_POWER;
         if (this.currentPower > maximumPower) {
             this.currentPower = maximumPower;
         }
     }
 
-    public void removePower()  {
+    public void decreasePower()  {
         currentPower -= MAX_INCREMENT_POWER;
         if (this.currentPower < 0) {
             this.currentPower = 0;

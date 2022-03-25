@@ -24,8 +24,8 @@ public class Rocket {
         return code;
     }
 
-    public void addPropellant(int maximumPower,int currentPower) throws Exception {
-        propellants.add(new Propellant(maximumPower,currentPower));
+    public void addPropellant(int maximumPower) throws Exception {
+        propellants.add(new Propellant(maximumPower));
 
     }
 
@@ -33,14 +33,14 @@ public class Rocket {
         return propellants;
     }
 
-    public void addPower()  {
+    public void increasePower()  {
         for (Propellant propellant : propellants) {
-            propellant.addPower();
+            propellant.increasePower();
         }
     }
-    public void removePower()  {
+    public void decreasePower()  {
         for (Propellant propellant : propellants) {
-            propellant.removePower();
+            propellant.decreasePower();
         }
     }
 

@@ -4,80 +4,81 @@ public class Main {
         Rocket firstRocket = createFirstRocket();
         Rocket secondRocket = createSecondRocket();
         printRocketsStatus(firstRocket, secondRocket);
-        manageRockets(firstRocket,secondRocket);
+        moveRockets(firstRocket, secondRocket);
 
     }
 
-    private static void manageRockets(Rocket firstRocket, Rocket secondRocket) {
-        firstAction(firstRocket, secondRocket);
-        secondAction(firstRocket,secondRocket);
-        thirdAction(firstRocket,secondRocket);
+    private static void moveRockets(Rocket firstRocket, Rocket secondRocket) {
+        firstMovement(firstRocket, secondRocket);
+        secondMovement(firstRocket, secondRocket);
+        thirdMovement(firstRocket, secondRocket);
 
     }
 
-    private static void thirdAction(Rocket firstRocket, Rocket secondRocket) {
-        speedUpRocket(firstRocket,15);
-        speedUpRocket(secondRocket,15);
+    private static void thirdMovement(Rocket firstRocket, Rocket secondRocket) {
+        speedUpRocket(firstRocket, 15);
+        speedUpRocket(secondRocket, 15);
         System.out.println("Tercera Acció\n");
         printRocketsCurrentTotalPower(firstRocket, secondRocket);
     }
 
-    private static void secondAction(Rocket firstRocket, Rocket secondRocket) {
-        slowDownRocket(firstRocket,5);
-        speedUpRocket(secondRocket,7);
+    private static void secondMovement(Rocket firstRocket, Rocket secondRocket) {
+        slowDownRocket(firstRocket, 5);
+        speedUpRocket(secondRocket, 7);
         System.out.println("Segona Acció\n");
         printRocketsCurrentTotalPower(firstRocket, secondRocket);
     }
 
-    private static void firstAction(Rocket firstRocket, Rocket secondRocket) {
+    private static void firstMovement(Rocket firstRocket, Rocket secondRocket) {
         speedUpRocket(firstRocket, 3);
         speedUpRocket(secondRocket, 3);
         System.out.println("Primera Acció\n");
-        printRocketsCurrentTotalPower(firstRocket,secondRocket);
+        printRocketsCurrentTotalPower(firstRocket, secondRocket);
 
     }
 
     private static void slowDownRocket(Rocket rocket, int speed) {
         for (int i = 0; i < speed; i++) {
-            rocket.removePower();
+            rocket.decreasePower();
         }
     }
 
     private static void speedUpRocket(Rocket rocket, int speed) {
         for (int i = 0; i < speed; i++) {
-            rocket.addPower();
+            rocket.increasePower();
         }
 
     }
 
     private static Rocket createFirstRocket() throws Exception {
         Rocket rocket = new Rocket("32WESSDS");
-        assignMaxPowerToPropellantsOfFirstRocket(rocket);
+        assignPropellersToRocket(generateFirstRocketPropellantArray(rocket),rocket);
         return rocket;
 
     }
 
     private static Rocket createSecondRocket() throws Exception {
         Rocket rocket = new Rocket("LDSFJA32");
-        assignMaxPowerToPropellantsOfSecondRocket(rocket);
+        assignPropellersToRocket(generateSecondRocketPropellantArray(rocket),rocket);
         return rocket;
 
     }
 
-    private static void assignMaxPowerToPropellantsOfFirstRocket(Rocket rocket) throws Exception {
-        int[] firstRocketPropellantsPower = new int[]{10, 30, 80};
-        for (int maximumPower : firstRocketPropellantsPower) {
-            rocket.addPropellant(maximumPower, rocket.getCurrentRocketPower());
+    private static int[] generateFirstRocketPropellantArray(Rocket rocket) throws Exception {
+        return new int[]{10, 30, 80};
 
+    }
+    private static int[] generateSecondRocketPropellantArray(Rocket rocket) throws Exception {
+        return new int[]{30, 40, 50, 50, 30, 10};
+
+    }
+
+    private static void assignPropellersToRocket(int[] propellants, Rocket rocket) throws Exception {
+        for (int maximumPower : propellants) {
+            rocket.addPropellant(maximumPower);
         }
     }
 
-    private static void assignMaxPowerToPropellantsOfSecondRocket(Rocket rocket) throws Exception {
-        int[] secondRocketPropellantsPower = new int[]{30, 40, 50, 50, 30, 10};
-        for (int maximumPower : secondRocketPropellantsPower) {
-            rocket.addPropellant(maximumPower, rocket.getCurrentRocketPower());
-        }
-    }
 
     private static void printRocketsStatus(Rocket firstRocket, Rocket secondRocket) {
 
@@ -91,8 +92,8 @@ public class Main {
 
     private static void printRocketsCurrentTotalPower(Rocket firstRocket, Rocket secondRocket) {
 
-        System.out.println(  "Potencia del primer coet " + firstRocket.getCurrentRocketPower());
-        System.out.println( "Potencia del segon coet " + secondRocket.getCurrentRocketPower()+"\n");
+        System.out.println("Potencia del primer coet " + firstRocket.getCurrentRocketPower());
+        System.out.println("Potencia del segon coet " + secondRocket.getCurrentRocketPower() + "\n");
     }
 }
 
